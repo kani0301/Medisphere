@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Keep base white as pure white for high-contrast white text, buttons, and icons */
+  --color-white: #ffffff;
+
+  /* Dark theme overrides for standard Tailwind grey scales (obsidian-slate palette) */
+  --color-gray-50: #080c16;    /* Deepest nested panels */
+  --color-gray-100: #1a2235;   /* Soft border divider */
+  --color-gray-150: #222d46;   /* Active border / hover border */
+  --color-gray-200: #2d3b5a;   /* Strong border */
+  --color-gray-300: #3b4d74;   /* Inactive tabs */
+  --color-gray-400: #64748b;   /* Muted text */
+  --color-gray-500: #94a3b8;   /* Secondary text */
+  --color-gray-650: #cbd5e1;   /* Semi-bright labels */
+  --color-gray-700: #e2e8f0;   /* Standard readable body text */
+  --color-gray-800: #f1f5f9;   /* High-contrast text */
+  --color-gray-850: #f8fafc;   /* Extremely bright text */
+  --color-gray-900: #ffffff;   /* Headings and titles */
+  --color-gray-950: #ffffff;
+
+  /* Premium royal blue-indigo clinical scale */
+  --color-blue-50: #0d1527;    /* Translucent dark backgrounds */
+  --color-blue-100: #14223e;   /* Clinical card accents */
+  --color-blue-200: #1b2f56;
+  --color-blue-300: #2b457b;
+  --color-blue-400: #3b82f6;   /* Vibrant clinical blue */
+  --color-blue-500: #60a5fa;   /* Brighter neon blue */
+  --color-blue-600: #2563eb;   /* Active selection color */
+  --color-blue-650: #3b82f6;   /* Sidebar selected tab background */
+  --color-blue-700: #3b82f6;
+  --color-blue-800: #60a5fa;
+  --color-blue-900: #ffffff;   /* Dark text becomes white in dark mode */
+  --color-blue-950: #ffffff;
+
+  /* Triage Teal / Emerald Clinical Scales */
+  --color-teal-50: #07191d;
+  --color-teal-100: #0a292f;
+  --color-teal-200: #0f3e47;
+  --color-teal-500: #14b8a6;   /* Glow teal */
+  --color-teal-600: #2dd4bf;   /* Active selection */
+  --color-teal-650: #0ea5e9;
+
+  /* Rose / Emergency Scales */
+  --color-rose-50: #1c0e15;
+  --color-rose-100: #2d1420;
+  --color-rose-200: #491b32;
+  --color-rose-600: #f43f5e;   /* Vibrant emergency red */
+  --color-rose-700: #fda4af;
+
+  /* Indigo/Purple Accent scales */
+  --color-indigo-50: #121026;
+  --color-indigo-100: #1e193f;
+  --color-indigo-650: #8b5cf6;  /* Neon purple dashboard buttons */
+
+  /* Correcting slate colors for pristine obsidian look */
+  --color-slate-900: #060913;
+  --color-slate-850: #0e1322;
+  --color-slate-800: #12192c;
+  --color-slate-700: #1e293b;
+  --color-slate-350: #94a3b8;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+/* 
+  Global element styling for a clean dark clinical space.
+  We override .bg-white to be the primary card color (#111726) so cards render beautifully
+  without modifying every single component file.
+*/
+body {
+  background: 
+    radial-gradient(at 0% 0%, rgba(244, 63, 94, 0.05) 0px, transparent 40%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 40%),
+    radial-gradient(at 50% 100%, rgba(139, 92, 246, 0.04) 0px, transparent 50%),
+    #060913;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* Elegant obsidian dark card background override */
+.bg-white {
+  background-color: #111726 !important;
+  border-color: #1a2235 !important;
+}
+
+/* Hover effects on dark borders */
+.hover\:bg-gray-50:hover {
+  background-color: #172033 !important;
+}
+
+.bg-gray-50\/50 {
+  background-color: rgba(26, 34, 53, 0.4) !important;
+}
+
+.bg-gray-50 {
+  background-color: #0d1322 !important;
+}
+
+.border-gray-100 {
+  border-color: #1a2235 !important;
+}
+
+.border-gray-150 {
+  border-color: #222d46 !important;
+}
+
+/* Correct contrast for table headings */
+th {
+  color: #94a3b8 !important;
+  border-color: #1a2235 !important;
+}
+
+/* Smooth custom dark scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2235;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2d3b5a;
+}
+
+/* Explicit styling for select, option and input elements to prevent black-on-black or white-on-white browser rendering */
+select, option, input[type="text"], input[type="datetime-local"], input[type="password"], input[type="number"], textarea {
+  background-color: #111726 !important;
+  color: #ffffff !important;
+  border-color: #222d46 !important;
+}
+
+/* Specific overrides for dropdown options in native popups */
+option {
+  background-color: #111726 !important;
+  color: #ffffff !important;
+}
+
+/* Fallback for select dropdowns that might render with white native backgrounds in older browsers */
+select option {
+  background-color: #111726 !important;
+  color: #ffffff !important;
+}
